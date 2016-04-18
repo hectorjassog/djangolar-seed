@@ -1,0 +1,10 @@
+# ====== #
+# Python #
+# ====== #
+__pycache__/
+*.py[cod]
+
+# ========= #
+# Dev tools #
+# ========= #
+db.sqlite3
