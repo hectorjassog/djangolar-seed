@@ -20,9 +20,7 @@ For developing the project, you should have the followings installed on your mac
 - [Node](https://nodejs.org/en/)
   - node (v4) 'n' npm (latest)
 
-**
-Commands concerning the whole project should be run from its root and those concerning only of its side (client/server), from the corresponding directory.
-**
+**Commands concerning the whole project should be run from its root and those concerning only of its side (client/server), from the corresponding directory.**
 
 Once you have your repository set up on your local machine and virtual environment activated, you can run the following commands to install all the project's dependencies :
 ```sh

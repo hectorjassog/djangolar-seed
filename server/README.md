@@ -3,9 +3,7 @@ Server side of this fantastic application, invincible REST API using [DRF (Djang
 
 *This document is nowhere near the level of the official documentations. Please don't use it as a reference document. It's only for quick-starting with this project*
 
-**
-You should always be working in a virtual environment, the same for the whole life of the project if possible
-**
+**You should always be working in a virtual environment, the same for the whole life of the project if possible**
 
 ## So what ?
 - **Terminology** :
