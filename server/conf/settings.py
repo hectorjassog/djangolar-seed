@@ -87,12 +87,21 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
+    #SQLite
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    #PostgreSQL
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': '', # database's name
+    #    'USER': 'django', # user's name
+    #    'PASSWORD': '', # user's password, should use certs instead
+    #    'HOST': '', # host of the database
+    #    'PORT': '5432', # postgres' cluster's port
+    #},
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
