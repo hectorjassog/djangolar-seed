@@ -16,11 +16,11 @@ You should always be working in a virtual environment, the same for the whole li
   See [`pip freeze`](https://pip.pypa.io/en/stable/reference/pip_freeze/).
   **MUST BE UPDATED EACH TIME YOU INSTALL NEW DEPENDENCIES**.
   - `__init.py__` : those (probably empty) files are there to tell python that the directory is a python module
-  - [`manage.py`](manage.py) : Python script wrapping the `django-admin` CLI. Used to manage a Django project. See [Manage](#Manage).
-  - [`urls.py`](urls.py) : Server-wide configuration of URLs. See [URLs](#URLs).
+  - [`manage.py`](manage.py) : Python script wrapping the `django-admin` CLI. Used to manage a Django project. See [Manage](#manage).
+  - [`urls.py`](urls.py) : Server-wide configuration of URLs. See [URLs](#urls).
   - [`conf/`](conf/)
-    - [`settings.py`](conf/settings.py) : Settings of the Django project. Contains references to modules and other values needed by the project (e.g. django apps, [database](#Database)). See [Settings](#Settings).
-    - [`wsgi.py`](conf/wsgi.py) : Configuration for running the Python application server. See [Gunicorn](#Gunicorn).
+    - [`settings.py`](conf/settings.py) : Settings of the Django project. Contains references to modules and other values needed by the project (e.g. django apps, [database](#database)). See [Settings](#settings).
+    - [`wsgi.py`](conf/wsgi.py) : Configuration for running the Python application server. See [Gunicorn](#gunicorn).
 - **Third-party apps** :
   - [Django Rest Framework](http://www.django-rest-framework.org/)  
   Powerful and flexible toolkit for building Web APIs.
@@ -41,7 +41,7 @@ Most useful commands :
   - `help <command>` for help about a specific command
 - `makemigrations` to create the migrations file for your model and database
   - `makemigrations <app>` to do it for only one of your installed app
-- `migrate` actually apply all migrations to your default database (as defined in your [settings](#Settings))
+- `migrate` actually apply all migrations to your default database (as defined in your [settings](#settings))
   - `migrate <app>` to apply only one app migrations ( + dependencies )
   - `migrate <app> <migration>` only up to the specified migration (possibly rollbacking in the process)
   - `--database DB` to specify which database to migrate
@@ -50,8 +50,8 @@ Most useful commands :
   - `runserver <hostname:port>` to specify where you want it served  
   (0.0.0.0:xxxx to use the machine's name and access it from outside)
 - `shell` to run a python interpreter shell configured with the project in mind
-- `test` for running tests. See [Testing](#Testing)
-- `startapp` to create a new django app in your project. See [Development](#Development)
+- `test` for running tests. See [Testing](#testing)
+- `startapp` to create a new django app in your project. See [Development](#development)
 
 ### [Settings](conf/settings.py)
 One of the most important aspect of the project is probably the database (unless you're an ugly troll who want to roll on SQLite)
