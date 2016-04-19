@@ -5,6 +5,9 @@ Server side of this fantastic application, invincible REST API using [DRF (Djang
 
 **You should always be working in a virtual environment, the same for the whole life of the project if possible**
 
+## Quickstart
+...
+
 ## So what ?
 - **Terminology** :
   - *Project* means the whole Django project

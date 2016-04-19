@@ -20,7 +20,7 @@ For developing the project, you should have the followings installed on your mac
 - [Node](https://nodejs.org/en/)
   - node (v4) 'n' npm (v3)
   - [bower](http://bower.io/)
-  - [grunt-cli](https://www.npmjs.com/package/grunt-cli)
+  - [grunt-cli@0.1](https://www.npmjs.com/package/grunt-cli)
 
 Need help to install everything ? Click [here !](#installation)
 

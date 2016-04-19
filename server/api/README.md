@@ -9,6 +9,7 @@ This is where almost all the code of the API will live
   - `models.py`
   - `serializers.py`
   - `views.py`
+  - `permissions.py`
   - `migrations`
   - `urls.py`
   - `test.py`

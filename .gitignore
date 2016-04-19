@@ -14,7 +14,7 @@ Thumbs.db
 # Personal/Project choices #
 # ======================== #
 *.swp
-
+*.log
 
 # ======== #
 # Generics #
