@@ -43,7 +43,7 @@ Most useful commands :
   - `migrate <app>` to apply only one app migrations ( + dependencies )
   - `migrate <app> <migration>` only up to the specified migration (possibly rollbacking in the process)
   - `--database DB` to specify which database to migrate
-- `runserver` to run the Django **development** server on *http://localhost:8000*
+- `runserver` to run the Django **development** server on *<http://localhost:8000>*
   - `runserver <port>` to specify a port
   - `runserver <hostname:port>` to specify where you want it served  
   (0.0.0.0:xxxx to use the machine's name and access it from outside)
