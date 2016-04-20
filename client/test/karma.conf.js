@@ -34,6 +34,8 @@ module.exports = function(config) {
       'bower_components/lodash/lodash.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/ng-sortable/dist/ng-sortable.js',
+      'bower_components/angular-translate/angular-translate.js',
+      'bower_components/angular-gettext/dist/angular-gettext.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

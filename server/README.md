@@ -6,12 +6,19 @@ Server side of this fantastic application, invincible REST API using [DRF (Djang
 **You should always be working in a virtual environment, the same for the whole life of the project if possible**
 
 ## Quickstart
-...
+```sh
+# Update your database schema, if needed
+./manage.py migrate
+# Test, if tests there are
+./manage.py test
+# Start the server so the client can access it
+./manage.py runserver 0.0.0.0:53215
+```
 
 ## So what ?
 - **Terminology** :
   - *Project* means the whole Django project
-  - *Application* or *App* designed a single Django app, similar to a Python module, such as DRF or even Django Auth
+  - *Application* or *App* designs a single Django app, similar to a Python module, such as DRF or even Django Auth
 - **Files** :
   - [`requirements.txt`](requirements.txt) : File to install python dependencies. Used to replicate environments.  
   See [`pip freeze`](https://pip.pypa.io/en/stable/reference/pip_freeze/).
