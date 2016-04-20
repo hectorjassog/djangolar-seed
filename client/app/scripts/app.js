@@ -13,10 +13,18 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
-    'ngSanitize',
+    'ui.router',
+		'restangular',
+		//'as-sortable',
+		//'pascalprecht.translate',
+		//'gettext',
+		'ngSanitize',
     'ngTouch'
   ])
+	.config(function (RestangularProvider) {
+		RestangularProvider.setBaseUrl('http://localhost:53215/api/');
+	})
+	/* ngRoute, should stay here for the yo:route command
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -32,4 +40,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })*/
+;
+	
