@@ -81,7 +81,7 @@ $ mkproject <project>
 $ workon <env>
 #The prompt should look like this with a v-env activated
 (<env>) foo@bar ~/dev/<project> $
-# Install package in your new shiny sandbox
+# Install packages in your new shiny sandbox
 $ pip install httpie
 $ pip install -r requirements.txt
 # To exit a v-env
