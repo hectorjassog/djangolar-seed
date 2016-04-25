@@ -15,8 +15,8 @@ For developing the project, you should have the followings installed on your mac
     - sqlite3 (check its presence by running `import sqlite3` in your Python console)
   - [virtualenv](https://pypi.python.org/pypi/virtualenv)
   - [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper)
-  or the [powershell version](https://pypi.python.org/pypi/virtualenvwrapper-powershell)
-  for Windows (with powershell) if you feel as brave as Don Quixote
+  or, if you feel as brave as Don Quixote, the [powershell version](https://pypi.python.org/pypi/virtualenvwrapper-powershell)
+  for Windows (with powershell)
 - [Node](https://nodejs.org/en/)
   - node (v4) 'n' [npm](https://www.npmjs.com/) (v3)
   - [bower](http://bower.io/)
@@ -39,6 +39,7 @@ bower install
 Check that everything is OK :
 ```sh
 #Server-side
+./manage.py migrate #if you're using a new database / you may also need makemigrations
 ./manage.py test
 ./manage.py shell #C-D to quit
 ./manage.py runserver 53215
@@ -103,6 +104,8 @@ then you can install bower and grunt-cli
 ```sh
 npm install -g bower grunt-cli@">=0.1.13 <1.0.0"
 ```
+
+If you have problems (e.g. EACCESS) go look around [there](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
 
 ## Continuous Integration
 ...
