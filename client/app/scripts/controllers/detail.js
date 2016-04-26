@@ -22,12 +22,16 @@ angular.module('clientApp')
 		  detail.album = album;
 	  });
 	  
-	  //Returns an object in the "xx min xx s" format
+	  //Returns a second format object in the "xx'xx''" format
 	  var alterDuration = function(duration) {
 		  var min = Math.floor(duration / 60);
-		  console.log(min);
+		  if (min < 10) {
+			  min = "0"+min;
+		  }
 		  var sec = Math.floor(duration % 60);
-		  console.log(sec);
+		  if (sec < 10) {
+			  sec = "0"+sec;
+		  }
 		  return min + "'" + sec +"''";
 	  };
   });
