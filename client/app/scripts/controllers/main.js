@@ -8,10 +8,15 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Restangular) {
+	  var main = this;
+	  
+	  //Get /album
+	  var baseAlbum = Restangular.all('album');
+	  
+	  //Put the answer in main.allAlbum
+	  baseAlbum.getList().then(function(albums){
+		 main.allAlbums = albums; 
+	  });
+	  
   });
