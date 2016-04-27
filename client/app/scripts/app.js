@@ -23,6 +23,7 @@ angular
                       ])
                       .config(function (RestangularProvider) {
                     	  RestangularProvider.setBaseUrl('http://192.168.1.30:53215/api/');
+                	      RestangularProvider.setRequestSuffix('/');
                       })
                       .config(function ($stateProvider, $urlRouterProvider) {
                     	  //Configuring the state. Putting the adress of the template and association with the controller
@@ -52,8 +53,14 @@ angular
                     		  controller: 'DetailCtrl',
                     		  controllerAs: 'detail'
                     	  })
+                    	  .state('ajoutAlbum', {
+                    		  url: '/ajoutAlbum',
+                    		  templateUrl: 'views/ajoutAlbum.html',
+                    		  controller: 'AjoutalbumCtrl',
+                    		  controllerAs: 'ajoutAlbum'
+                    	  })
                     	  ;
-                    	  $urlRouterProvider.otherwise('/')
+                    	  $urlRouterProvider.otherwise('/');
                       })
                       /* ngRoute, should stay here for the yo:route command
   .config(function ($routeProvider) {
@@ -72,6 +79,11 @@ angular
         templateUrl: 'views/detail.html',
         controller: 'DetailCtrl',
         controllerAs: 'detail'
+      })
+      .when('/ajoutAlbum', {
+        templateUrl: 'views/ajoutalbum.html',
+        controller: 'AjoutalbumCtrl',
+        controllerAs: 'ajoutAlbum'
       })
       .otherwise({
         redirectTo: '/'

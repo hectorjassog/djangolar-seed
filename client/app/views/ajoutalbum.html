@@ -1,0 +1,16 @@
+<h1>Ajouter un album</h1>
+<hr>
+<div class="form-group">
+	<label>Nom de l'album :</label>
+	<input type="text" class="form-control" ng-model="ajoutAlbum.name" placeholder="Nom de l'album">
+	<label>Artiste :</label>
+	<input type="text" class="form-control" ng-model="ajoutAlbum.artist" placeholder="Artiste">
+	<label>Année :</label>
+	<input type="number" class="form-control" ng-model="ajoutAlbum.year" placeholder="Année">
+	<label>Genre :</label>
+	<!-- Here the ng-options put k in the model & v in the label of the option tag -->
+	<select class="form-control" ng-model = "ajoutAlbum.genre" ng-options="k as v for (k,v) in ajoutAlbum.genres">
+	</select>
+</div>
+
+	<button ng-class="{disabled : ajoutAlbum.added}" type="button" class="btn btn-default pull-right" ng-click="ajoutAlbum.addAlbum()">Ajouter</button>
