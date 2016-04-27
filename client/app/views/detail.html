@@ -2,3 +2,16 @@
 <ul class="list-group">
 	<li class="list-group-item" ng-repeat="track in detail.album.tracks">{{track.order}} - {{track.title}} - {{track.duration}}</li>
 </ul>
+<hr>
+<h3>Ajout d'une piste :</h3>
+<hr>
+{{detail.message}}
+<div class="form-group">
+	<label>Ordre de la piste :</label>
+	<input type="number" class="form-control" ng-model="detail.newTrack.order" placeholder="0">
+	<label>Titre de la piste</label>
+	<input type="text" class="form-control" ng-model="detail.newTrack.title" placeholder="Titre">
+	<label>Durée (en s) :</label>
+	<input type="number" class="form-control" ng-model="detail.newTrack.duration" placeholder="0" >
+</div>
+<a ui-sref='detail({albumId: detail.albumId})'><button type="button" class="btn btn-default pull-right" ng-click="detail.addTrack()">Ajouter</button></a> 

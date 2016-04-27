@@ -26,14 +26,12 @@ angular.module('clientApp')
 		  var newAlbum = [];
 		  var baseAlbum = Restangular.all('album');
 		  if (ajoutAlbum.name && ajoutAlbum.artist && ajoutAlbum.year && ajoutAlbum.genre) {
-			  console.log("Yo !");
 			  newAlbum = {
-					  "album_name":ajoutAlbum.name,
-					  "artist":ajoutAlbum.artist,
-					  "year":ajoutAlbum.year,
-					  "genre":ajoutAlbum.genre
+					  "album_name" : ajoutAlbum.name,
+					  "artist" : ajoutAlbum.artist,
+					  "year" : ajoutAlbum.year,
+					  "genre" : ajoutAlbum.genre
 					  };
-			  console.log(newAlbum);
 			  ajoutAlbum.added = true;
 			  baseAlbum.post(newAlbum);
 		  }
