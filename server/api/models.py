@@ -23,10 +23,12 @@ class Track(models.Model):
     title = models.CharField(max_length=100)
     duration = models.IntegerField(validators=[MinValueValidator(1)]) # in seconds
     order = models.IntegerField()
-    album = models.ForeignKey(Album)
+    album = models.ForeignKey(Album, related_name='tracks')
+    plays = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ('order',)
+        unique_together = ('album', 'order',)
 
-    def __str__(self):
-        return '{0.order}: {0.title}'.format(self)
+    #def __str__(self):
+        #return '{0.order}: {0.title}'.format(self)

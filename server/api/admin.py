@@ -17,6 +17,6 @@ class AlbumAdmin(admin.ModelAdmin):
     inlines = [TrackInline]
 
     def number_of_tracks(self,obj):
-        return obj.track_set.all().count()
+        return obj.tracks.all().count()
 
 admin.site.register(Album, AlbumAdmin)
