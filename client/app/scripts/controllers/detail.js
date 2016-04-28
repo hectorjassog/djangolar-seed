@@ -45,18 +45,19 @@ angular.module('clientApp')
 		var baseTrack = baseAlbum.all('track');
 		//Basical verification
 		if (detail.newTrack.order && detail.newTrack.title && detail.newTrack.duration) {
-			//Create a new object
+			//Create a new track object
 			createdTrack = {
 					"order" : detail.newTrack.order,
 					"title" : detail.newTrack.title,
 					"duration" : detail.newTrack.duration
 			};
-			//Post the created object
+			//POST the created track object
 			baseTrack.post(createdTrack).then(function(){
 				//Reset the object
 				detail.newTrack.order = 0;
 				detail.newTrack.title = "Titre";
 				detail.newTrack.duration = 0;
+				//Get the new list of track by getting the album
 				baseAlbum.get().then(function(album){
 					angular.forEach(album.tracks, function(el, index, arr){
 						el.duration = alterDuration(el.duration);
@@ -69,15 +70,17 @@ angular.module('clientApp')
 				detail.message = error.data.non_field_errors;
 			});
 		}else {
-
 			detail.message = "Merci de bien vouloir remplir tous les champs";
 		}
 	};
 	
 	//Modify the selected album with the modifiedAlbum object
 	detail.modifyAlbum = function() {
+		//Copy the modified album in the baseAlbum object that is refering to the get /album/id of the API
 		baseAlbum = Restangular.copy(detail.modifiedAlbum);
+		//Do a PUT (or POST) of the modified album
 		baseAlbum.save().then(function(){
+			//Do a GET on the album to display the new informations
 			baseAlbum.get().then(function(album){
 				angular.forEach(album.tracks, function(el, index, arr){
 					el.duration = alterDuration(el.duration);
@@ -90,14 +93,18 @@ angular.module('clientApp')
 		});
 	};
 	
-	
+	//Delete the selected track referenced by its track order (deleting is not allowed with track id)
 	detail.deleteTrack = function(trackOrder) {
+		//asking for a confirmation in the window
 		if(window.confirm("Supprimer l'album ?")) {
+			//remove the track. The album needs to be selected and THEN we can select the track 
 			var oneTrack = Restangular.one('album', detail.albumId).one('track', trackOrder).remove().then(function(){
+				//Get the new list of track by getting the album
 				baseAlbum.get().then(function(album){
 					angular.forEach(album.tracks, function(el, index, arr){
 						el.duration = alterDuration(el.duration);
 					});
+					//assign the getted album in the scope
 					detail.album = album;
 					//Copy the album in a new object that will be used to make some modifications (if needed)
 					detail.modifiedAlbum = angular.copy(album);
