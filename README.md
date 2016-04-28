@@ -1,7 +1,7 @@
 # Djangolar Template
-Template folder structure and initial config to start a project using
-Django/Django Rest Framework for a formidable API backend and AngularJS for its
-spectacular frontend magic
+Template folder structure and initial configuration to start a project using
+Django/Django Rest Framework for a formidable API back-end and AngularJS for its
+spectacular front-end magic
 
 *This document is nowhere near the level of the official documentations. Please don't use it as a reference document. It's only for quick-starting with this project*
 
@@ -16,7 +16,7 @@ For developing the project, you should have the followings installed on your mac
   - [virtualenv](https://pypi.python.org/pypi/virtualenv)
   - [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper)
   or, if you feel as brave as Don Quixote, the [powershell version](https://pypi.python.org/pypi/virtualenvwrapper-powershell)
-  for Windows (with powershell)
+  for Windows (with powershell) or [plain cmd prompt version](https://pypi.python.org/pypi/virtualenvwrapper-win)
 - [Node](https://nodejs.org/en/)
   - node (v4) 'n' [npm](https://www.npmjs.com/) (v3)
   - [bower](http://bower.io/)
@@ -58,9 +58,9 @@ To be continued ...
 
 ### Python
 Once you have installed Python 3.5 on your machine (Windows or OS X, you need to compile it yourself on GNU/Linux), you should have access to the `pip` command-line interface.  
-If not, exectute [get-pip.py](https://bootstrap.pypa.io/get-pip.py) within your target Python interpreter (the one you want `pip` for)
+If not, execute [get-pip.py](https://bootstrap.pypa.io/get-pip.py) within your target Python interpreter (the one you want `pip` for)
 
-When you can finally use `pip`:
+When you can finally use `pip` (it may be `pip3` or `pip3.5`):
 ###### On \*nix
 ```sh
 # Depending on your Python installation, you may need to sudo those commands

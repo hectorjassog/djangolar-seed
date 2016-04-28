@@ -7,6 +7,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     url(r'^$',
         views.api_root),
+    url(r'^genres/$',
+        views.genres, name='genres-list'),
     url(r'^album/$',
         views.AlbumList.as_view(), name='album-list'),
     url(r'^album/(?P<pk>[0-9]+)/$',

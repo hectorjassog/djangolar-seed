@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from .models import Album, Track
+from .models import Album, Track, GENRE_CHOICES
 from .serializers import AlbumSerializer, TrackSerializer, CompleteTrackSerializer, CompleteAlbumSerializer
 
 
@@ -16,9 +16,16 @@ def api_root(request, format=None):
     Gives links to start navigating the API
     """
     return Response({
-        # Just an example
         'albums': reverse('album-list', request=request, format=format),
+        'genres': reverse('genres-list', request=request, format=format),
     })
+
+@api_view(['GET'])
+def genres(request, format=None):
+    """
+    Retrieves the human-readable list of genres
+    """
+    return Response(dict(GENRE_CHOICES))
 
 class AlbumList(APIView):
     """
