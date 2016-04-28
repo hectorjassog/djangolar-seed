@@ -11,8 +11,8 @@ angular.module('clientApp')
 .controller('DetailCtrl', function ($scope, Restangular, $stateParams) {
 	var detail = this;
 	detail.albumId = $stateParams.albumId;
-
-	var baseAlbum = Restangular.one('album',$stateParams.albumId);
+	//
+	var baseAlbum = Restangular.one('album',detail.albumId);
 
 	//Do a get /album/albumId
 	baseAlbum.get().then(function(album){
@@ -20,6 +20,8 @@ angular.module('clientApp')
 			el.duration = alterDuration(el.duration);
 		});
 		detail.album = album;
+		//Copy the album in a new object that will be used to make some modifications (if needed)
+		detail.modifiedAlbum = angular.copy(album);
 	});
 
 	//Returns a second format object in the "xx'xx''" format
@@ -41,7 +43,7 @@ angular.module('clientApp')
 	detail.addTrack = function() {
 		var createdTrack = [];
 		var baseTrack = baseAlbum.all('track');
-		
+		//Basical verification
 		if (detail.newTrack.order && detail.newTrack.title && detail.newTrack.duration) {
 			//Create a new object
 			createdTrack = {
@@ -49,8 +51,9 @@ angular.module('clientApp')
 					"title" : detail.newTrack.title,
 					"duration" : detail.newTrack.duration
 			};
-			//Send the created object
-			baseTrack.post(createdTrack).then(function(code){
+			//Post the created object
+			baseTrack.post(createdTrack).then(function(){
+				//Reset the object
 				detail.newTrack.order = 0;
 				detail.newTrack.title = "Titre";
 				detail.newTrack.duration = 0;
@@ -61,10 +64,46 @@ angular.module('clientApp')
 					detail.album = album;
 				});
 			})
-			.catch(function(response) {
+			.catch(function(error) {
 				//Shows the message error
-				detail.message = response.data.non_field_errors;
+				detail.message = error.data.non_field_errors;
 			});
-		}		  
+		}else {
+
+			detail.message = "Merci de bien vouloir remplir tous les champs";
+		}
 	};
+	
+	//Modify the selected album with the modifiedAlbum object
+	detail.modifyAlbum = function() {
+		baseAlbum = Restangular.copy(detail.modifiedAlbum);
+		baseAlbum.save().then(function(){
+			baseAlbum.get().then(function(album){
+				angular.forEach(album.tracks, function(el, index, arr){
+					el.duration = alterDuration(el.duration);
+				});
+				detail.album = album;
+				//Copy the album in a new object that will be used to make some modifications (if needed)
+				detail.modifiedAlbum = angular.copy(album);
+			});
+			
+		});
+	};
+	
+	
+	detail.deleteTrack = function(trackOrder) {
+		if(window.confirm("Supprimer l'album ?")) {
+			var oneTrack = Restangular.one('album', detail.albumId).one('track', trackOrder).remove().then(function(){
+				baseAlbum.get().then(function(album){
+					angular.forEach(album.tracks, function(el, index, arr){
+						el.duration = alterDuration(el.duration);
+					});
+					detail.album = album;
+					//Copy the album in a new object that will be used to make some modifications (if needed)
+					detail.modifiedAlbum = angular.copy(album);
+				});
+			});
+
+		}
+	}
 });

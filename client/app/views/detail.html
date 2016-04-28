@@ -1,17 +1,44 @@
-<h1><strong>{{detail.album.album_name}}</strong> - {{detail.album.artist}}</h1>
+<h1>
+	<strong>{{detail.album.album_name}}</strong> - {{detail.album.artist}}
+</h1>
+{{detail.message}}
 <ul class="list-group">
-	<li class="list-group-item" ng-repeat="track in detail.album.tracks">{{track.order}} - {{track.title}} - {{track.duration}}</li>
+	<li class="list-group-item" ng-repeat="track in detail.album.tracks">
+	<button type="button" class="btn btn-sm btn-danger"
+			ng-click="detail.deleteTrack(track.order)">x</button> {{track.order}} -
+		{{track.title}} - {{track.duration}} - {{track.id}}</li>
 </ul>
 <hr>
-<h3>Ajout d'une piste :</h3>
-<hr>
-{{detail.message}}
-<div class="form-group">
-	<label>Ordre de la piste :</label>
-	<input type="number" class="form-control" ng-model="detail.newTrack.order" placeholder="0">
-	<label>Titre de la piste</label>
-	<input type="text" class="form-control" ng-model="detail.newTrack.title" placeholder="Titre">
-	<label>Durée (en s) :</label>
-	<input type="number" class="form-control" ng-model="detail.newTrack.duration" placeholder="0" >
+<div>
+	<h3>Modification de l'album :</h3>
+	<div class="form-group">
+		<label>Titre</label> <input type="text" class="form-control"
+			ng-model="detail.modifiedAlbum.album_name"> <label>Artiste</label>
+		<input type="text" class="form-control"
+			ng-model="detail.modifiedAlbum.artist"> <label>Année</label>
+		<input type="number" class="form-control"
+			ng-model="detail.modifiedAlbum.year"> <label>Genre</label> <input
+			type="text" class="form-control"
+			ng-model="detail.modifiedAlbum.genre">
+	</div>
+	<button type="button" class="btn btn-info"
+		ng-click="detail.modifyAlbum()">Modifier</button>
 </div>
-<a ui-sref='detail({albumId: detail.albumId})'><button type="button" class="btn btn-default pull-right" ng-click="detail.addTrack()">Ajouter</button></a> 
+<hr>
+<div>
+	<h3>Ajout d'une piste :</h3>
+	<hr>
+	{{detail.message}}
+	<div class="form-group">
+		<label>Ordre de la piste :</label> <input type="number"
+			class="form-control" ng-model="detail.newTrack.order" placeholder="0">
+		<label>Titre de la piste</label> <input type="text"
+			class="form-control" ng-model="detail.newTrack.title"
+			placeholder="Titre"> <label>Durée (en s) :</label> <input
+			type="number" class="form-control"
+			ng-model="detail.newTrack.duration" placeholder="0">
+	</div>
+	<a ui-sref='detail({albumId: detail.albumId})'><button
+			type="button" class="btn btn-default pull-right"
+			ng-click="detail.addTrack()">Ajouter</button></a>
+</div>
