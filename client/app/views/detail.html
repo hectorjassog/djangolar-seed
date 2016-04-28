@@ -17,9 +17,10 @@
 		<input type="text" class="form-control"
 			ng-model="detail.modifiedAlbum.artist"> <label>Année</label>
 		<input type="number" class="form-control"
-			ng-model="detail.modifiedAlbum.year"> <label>Genre</label> <input
-			type="text" class="form-control"
-			ng-model="detail.modifiedAlbum.genre">
+			ng-model="detail.modifiedAlbum.year"> <label>Genre</label> 
+			<select class="form-control" ng-model="detail.modifiedAlbum.genre"
+		ng-options="k as v for (k,v) in detail.genres">
+	</select>
 	</div>
 	<button type="button" class="btn btn-info"
 		ng-click="detail.modifyAlbum()">Modifier</button>

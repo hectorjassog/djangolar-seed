@@ -13,9 +13,20 @@ angular.module('clientApp')
 
 	//refers to the API /album
 	var baseAlbum = Restangular.all('album');
+	//GET the genres object from the API (/genres/
+	var baseGenre = Restangular.one('genres');
+	//GET the list of `Genres` objects from the API
+	baseGenre.get().then(function(genres){
+		main.genres = genres;
+		//"Unrestangularized" the object
+		main.genres = main.genres.plain();
 
-	//GET the list in main.allAlbum
+	});
+	//GET the list of album in main.allAlbum and associates the genre to its value
 	baseAlbum.getList().then(function(albums){
+		angular.forEach(albums, function(el, index, arr){
+			el.genre = main.genres[el.genre];
+		});
 		main.allAlbums = albums; 
 	});
 

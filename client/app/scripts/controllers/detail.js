@@ -38,7 +38,7 @@ angular.module('clientApp')
 		}
 		return min + "'" + sec +"''";
 	};
-	
+
 	//Add a new track in the API and reload the tracklist
 	detail.addTrack = function() {
 		var createdTrack = [];
@@ -73,7 +73,7 @@ angular.module('clientApp')
 			detail.message = "Merci de bien vouloir remplir tous les champs";
 		}
 	};
-	
+
 	//Modify the selected album with the modifiedAlbum object
 	detail.modifyAlbum = function() {
 		//Copy the modified album in the baseAlbum object that is refering to the get /album/id of the API
@@ -89,10 +89,10 @@ angular.module('clientApp')
 				//Copy the album in a new object that will be used to make some modifications (if needed)
 				detail.modifiedAlbum = angular.copy(album);
 			});
-			
+
 		});
 	};
-	
+
 	//Delete the selected track referenced by its track order (deleting is not allowed with track id)
 	detail.deleteTrack = function(trackOrder) {
 		//asking for a confirmation in the window
@@ -112,5 +112,14 @@ angular.module('clientApp')
 			});
 
 		}
-	}
+	};
+	//GET the genres object from the API (/genres/
+	var baseGenre = Restangular.one('genres');
+	//GET the list of `Genres` objects from the API
+	baseGenre.get().then(function(genres){
+		detail.genres = genres;
+		//"Unrestangularized" the object
+		detail.genres = detail.genres.plain();
+
+	});
 });
