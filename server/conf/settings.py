@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'api.apps.ApiConfig',
+    'example.apps.ExampleConfig',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -43,7 +43,10 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 MIDDLEWARE_CLASSES = [

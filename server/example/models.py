@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
+from django.contrib.auth.models import User
 
 GENRE_CHOICES = (
     ('rock', 'Rock',), ('alt_rock', 'Alternative Rock'), ('psyche_rock', 'Psychedelic Rock'),
@@ -32,3 +33,8 @@ class Track(models.Model):
 
     #def __str__(self):
         #return '{0.order}: {0.title}'.format(self)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, primary_key=True, related_name='profile')
+    phone = models.CharField(max_length=25, validators=[RegexValidator(regex=r'[0-9+\-()]*')])
+    is_admin = models.BooleanField(default=False)

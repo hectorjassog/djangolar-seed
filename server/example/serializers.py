@@ -1,6 +1,10 @@
 from rest_framework import serializers
-from .models import Album, Track
+
+from .models import Album, Track, UserProfile
 from .serializer_fields import ParameterisedHyperlinkedIdentityField
+
+from django.contrib.auth.models import User
+
 
 class CompleteTrackSerializer(serializers.ModelSerializer):
     url = ParameterisedHyperlinkedIdentityField(
@@ -82,5 +86,38 @@ class CompleteAlbumSerializer(serializers.ModelSerializer):
                           duration=item['duration'], order=item['order'] )
             track.save()
         """
+
+        return instance
+
+class UserSerializer(serializers.ModelSerializer):
+
+    phone = serializers.CharField(source='profile.phone')
+    is_admin = serializers.BooleanField(source='profile.is_admin')
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password', 'first_name', 'last_name', 'email', 'phone','is_admin')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        profile = validated_data.pop('profile', {})
+
+        user = User.objects.create_user(**validated_data)
+
+        UserProfile.objects.create(user=user, **profile)
+
+        return user
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.password = validated_data.get('password', instance.email)
+        instance.save()
+
+        profile = UserProfile.objects.get(user=instance)
+        profile.phone = validated_data.get('phone', profile.phone)
+        profile.is_admin = validated_data.get('is_admin', profile.is_admin)
 
         return instance

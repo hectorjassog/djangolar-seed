@@ -1,13 +1,18 @@
 from django.http import Http404
+from django.contrib.auth.models import User
 
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Album, Track, GENRE_CHOICES
-from .serializers import AlbumSerializer, TrackSerializer, CompleteTrackSerializer, CompleteAlbumSerializer
+from .serializers import (AlbumSerializer, TrackSerializer,
+                          CompleteTrackSerializer, CompleteAlbumSerializer,
+                          UserSerializer)
+from .permissions import IsAdminOrSelf, IsAdmin
 
 
 @api_view(['GET'])
@@ -18,6 +23,7 @@ def api_root(request, format=None):
     return Response({
         'albums': reverse('album-list', request=request, format=format),
         'genres': reverse('genres-list', request=request, format=format),
+        'users': reverse('user-list', request=request, format=format),
     })
 
 @api_view(['GET'])
@@ -169,3 +175,40 @@ class TrackDetail(APIView):
         track.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 """
+
+class UserList(APIView):
+    """
+    List all users or create a new one
+    """
+
+    serializer_class = UserSerializer
+    permission_classes = (IsAdmin,)
+
+    def get(self, request, format=None):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = UserSerializer(data=request.data, context={'request':request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserDetail(APIView):
+
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminOrSelf,)
+
+    def get_object(self, username):
+        try:
+            return User.objects.get(username=username)
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, username, format=None):
+        user = self.get_object(username=username)
+        self.check_object_permissions(self.request, user)
+        serializer = UserSerializer(user, context={'request': request})
+        return Response(serializer.data)
