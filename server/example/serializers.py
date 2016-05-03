@@ -57,6 +57,7 @@ class CompleteAlbumSerializer(serializers.ModelSerializer):
         tracks = data.get('tracks', [])
         orders = [track['order'] for track in tracks]
         seen = set()
+        #Check that order is unique without going thru the whole list
         if any(order in seen or seen.add(order) for order in orders):
             raise serializers.ValidationError('Track number must be unique on the album')
         return data

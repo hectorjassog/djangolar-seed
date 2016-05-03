@@ -209,6 +209,9 @@ class UserDetail(APIView):
 
     def get(self, request, username, format=None):
         user = self.get_object(username=username)
+        print('get' + str(user))
+        print(request.user)
+        print(request.user == user)
         self.check_object_permissions(self.request, user)
         serializer = UserSerializer(user, context={'request': request})
         return Response(serializer.data)

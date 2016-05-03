@@ -21,7 +21,7 @@ urlpatterns = [
         views.TrackDetail.as_view(), name='album-track-detail'),
     url(r'^user/$',
         views.UserList.as_view(), name='user-list'),
-    url(r'^user/(?P<username>[0-9A-Za-z@.+\-_]+)$',
+    url(r'^user/(?P<username>[0-9A-Za-z@.+\-_]+)/$',
         views.UserDetail.as_view(), name='user-detail'),
 ]
 
