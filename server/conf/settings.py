@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-LOGIN_REDIRECT_URL = '/ex/'
-
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DEFAULT_PERMISSION_CLASSES': (
@@ -73,6 +71,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 #)
 
 ROOT_URLCONF = 'urls'
+LOGIN_REDIRECT_URL = '/ex/'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 TEMPLATES = [
     {

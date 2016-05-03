@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
@@ -24,6 +25,9 @@ def api_root(request, format=None):
         'albums': reverse('album-list', request=request, format=format),
         'genres': reverse('genres-list', request=request, format=format),
         'users': reverse('user-list', request=request, format=format),
+        'logout': (settings.LOGOUT_URL if '/' in settings.LOGOUT_URL
+                   else reverse(settings.LOGOUT_URL, request=request, format=format)
+                  ),
     })
 
 @api_view(['GET'])
