@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'hxp_auth.apps.HxpAuthConfig',
+    'simple_auth.apps.SimpleAuthConfig',
     'example.apps.ExampleConfig',
     'corsheaders',
     'rest_framework',
@@ -72,8 +72,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'urls'
 LOGIN_REDIRECT_URL = '/ex/'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGIN_URL = 'simple_login'
+LOGOUT_URL = 'simple_logout'
 
 TEMPLATES = [
     {

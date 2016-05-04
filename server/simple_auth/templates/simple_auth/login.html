@@ -1,9 +1,9 @@
-{% extends "hxp_auth/base.html" %}
+{% extends "simple_auth/base.html" %}
 
 {% block head %}
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'hxp_auth/login.css' %}" />
-<script type="text/javascript" src="{% static 'hxp_auth/login.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'simple_auth/login.css' %}" />
+<script type="text/javascript" src="{% static 'simple_auth/login.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
---> <form method="POST" action="{% url 'login' %}" class="login-form">
+--> <form method="POST" action="{% url 'simple_login' %}" class="login-form">
       {% csrf_token %}
       {{ form.username }}
       {{ form.password }}
