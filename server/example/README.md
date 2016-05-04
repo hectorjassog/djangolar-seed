@@ -15,3 +15,7 @@ This is where almost all the code of the API will live
   - `test.py`
   - `admin.py`
   - `apps.py`
+
+
+## How-to
+Just look around, do what you want, \`cause a pirate is free and you are a pirate !

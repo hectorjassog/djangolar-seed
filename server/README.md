@@ -34,6 +34,11 @@ Server side of this fantastic application, invincible REST API using [DRF (Djang
   Powerful and flexible toolkit for building Web APIs.
   - [Django Cors Headers](https://github.com/OttoYiu/django-cors-headers)  
   A Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses.
+- **Own apps** :
+  - [For the love of Reinhardt](example/)  
+  Example used by the client. Just some Rock albums.
+  - [Simple Authentication](simple_auth/)
+   Follow the arrow .......>>----->.......[()](#authentication)
 
 **See [Django documentation](https://docs.djangoproject.com/en/1.9/) for more information**
 
@@ -78,7 +83,12 @@ It's where you define your project-level (or root) url patterns, which will incl
 The whole point of this is to develop a (as much as possible) RESTful API to consume with our AngularJS client. Then to refactor it to allow for a one-to-one relation between Model and App
 (think an app for users, one for water meters, one for temperature sensors)
 
+Start with `django-admin startapp api` on your command line
+
 Continue in the [`example` app](example/)
+
+### Authentication
+().......>>----->.......[@](simple_auth/)
 
 ### Testing
 Coming Soon ...
