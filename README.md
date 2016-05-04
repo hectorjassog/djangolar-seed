@@ -48,7 +48,7 @@ Check that everything is OK :
 grunt test
 grunt serve
 ```
-Then go to <http://localhost:9000/> and <http://localhost:9000/api/>
+Then go to <http://localhost:9000/> / <http://localhost:9000/example/> / <http://localhost:9000/admin/>
 
 If nothing goes wrong, you're ready to work on either part of your wonderful project !  
 To be continued ...  

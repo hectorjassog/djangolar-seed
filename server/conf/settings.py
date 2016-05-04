@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'api.apps.ApiConfig',
+    'simple_auth.apps.SimpleAuthConfig',
+    'example.apps.ExampleConfig',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -43,7 +44,13 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 MIDDLEWARE_CLASSES = [
@@ -64,6 +71,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 #)
 
 ROOT_URLCONF = 'urls'
+LOGIN_REDIRECT_URL = '/ex/'
+LOGIN_URL = 'simple_login'
+LOGOUT_URL = 'simple_logout'
 
 TEMPLATES = [
     {

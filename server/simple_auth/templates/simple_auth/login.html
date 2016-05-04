@@ -1,0 +1,45 @@
+{% extends "simple_auth/base.html" %}
+
+{% block head %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'simple_auth/login.css' %}" />
+<script type="text/javascript" src="{% static 'simple_auth/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="login-page">
+  <div class="form">
+
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+      {% else %}
+        <p>Please login to see this page.</p>
+      {% endif %}
+    {% endif %}
+
+<!--<form class="register-form">
+      <input type="text" placeholder="name" />
+      <input type="password" placeholder="password" />
+      <input type="text" placeholder="email address" />
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+--> <form method="POST" action="{% url 'simple_login' %}" class="login-form">
+      {% csrf_token %}
+      {{ form.username }}
+      {{ form.password }}
+      <button>login</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+      <!--
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+      -->
+    </form>
+  </div>
+</div>
+{% endblock %}

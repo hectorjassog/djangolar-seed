@@ -1,8 +1,8 @@
 # Shell demo
 
 ```python
-from api.models import Track, Album
-from api.serializers import AlbumSerializer, TrackSerializer
+from example.models import Track, Album
+from example.serializers import AlbumSerializer, TrackSerializer
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from django.utils.six import BytesIO

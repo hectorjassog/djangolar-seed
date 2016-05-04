@@ -78,7 +78,7 @@ It's where you define your project-level (or root) url patterns, which will incl
 The whole point of this is to develop a (as much as possible) RESTful API to consume with our AngularJS client. Then to refactor it to allow for a one-to-one relation between Model and App
 (think an app for users, one for water meters, one for temperature sensors)
 
-Continue in the [`api` app](api/)
+Continue in the [`example` app](example/)
 
 ### Testing
 Coming Soon ...
