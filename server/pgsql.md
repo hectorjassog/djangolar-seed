@@ -37,7 +37,6 @@ list all databases: `\l`
 list all tables: `\dt`
 list all roles/users: `\du`
 describe table/index/sequence/view: `\d [name]`
-``
 
 ###### CREATE USER / ROLE
 ```SQL

@@ -15,7 +15,7 @@ LOGIN_URL = 'simple_login' # those two are defined in the app
 LOGOUT_URL = 'simple_logout' # and you can namespace then in your urls
 ```
 
-You can now log in via https://example.com/choose-a-name/in/ and out via https://example.com/choose-a-name/in/
+You can now log in via https://example.com/choose-a-name/in/ and out via https://example.com/choose-a-name/out/
 
 You can also access your login URL in your project's code with :
 ```py
