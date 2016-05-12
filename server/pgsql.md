@@ -26,11 +26,11 @@ You also need to install [psycopg2](http://initd.org/psycopg/) to use PostgreSQL
   - `-l` list all database of the selected cluster
   - `-d <database>` connects to the selected database
 
-- `createdb <database>`[[SQL](#create_database)](supports `U/h/p` options): creates a database
+- `createdb <database>`[[SQL](#create_database)] (supports `U/h/p` options): creates a database
   - `-T <template>` to specify a template (default: `template1`). Use `template0` for a virgin database (in case template1 has been modified)
 - `dropdb <database>`(supports `U/h/p` options) to delete a database
 
-- `createuser <username>`[[SQL](#create_user)](supports `U/h/p` options): creates a postgreSQL user
+- `createuser <username>`[[SQL](#create_user)] (supports `U/h/p` options): creates a postgreSQL user
   - `-r` grants CREATEROLE privilege
   - `-g <role>` add it as member of those roles (multiples roles = multiples `-g`)
   - `-E` encrypts the password
