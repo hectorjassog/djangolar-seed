@@ -40,10 +40,10 @@ You also need to install [psycopg2](http://initd.org/psycopg/) to use PostgreSQL
 
 ## PSQL
 ###### Cheat Sheet
-list all databases: `\l`
-list all tables: `\dt`
-list all roles/users: `\du`
-describe table/index/sequence/view: `\d [name]`
+list all databases: `\l`  
+list all tables: `\dt`  
+list all roles/users: `\du`  
+describe table/index/sequence/view: `\d [name]`  
 
 ###### CREATE USER / ROLE
 ```SQL
